@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +22,7 @@
       padding: 20px;
       font-size: 16px;
       overflow-x: hidden;
+      max-width: 100%;
     }
 
     h1, h2 {
@@ -33,6 +35,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
+      text-align: center;
     }
 
     h2 {
@@ -67,9 +70,27 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
+      text-align: left;
     }
 
-    /* Responsive design */
+    /* Modern Button Style */
+    .btn {
+      display: inline-block;
+      background-color: #00FF00;
+      color: #121212;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #33cc33;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
       body {
         font-size: 14px;
@@ -89,42 +110,53 @@
     }
   </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>Favela Hacker</h1>
+  <header>
+    <div class="container">
+      <h1>Favela Hacker</h1>
+    </div>
+  </header>
 
-    <div class="section">
+  <main class="container">
+    <section class="section">
       <h2>🎯 Missão</h2>
       <p>Hackear a desigualdade com conhecimento e tecnologia.</p>
       <p>Transformar vidas através da educação em cibersegurança.</p>
       <p>Capacitar jovens de comunidades vulneráveis com habilidades digitais.</p>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <h2>🧩 Nosso Projeto</h2>
       <p>Favela Hacker é uma porta de entrada para o mundo da tecnologia.</p>
       <p>Ensinamos cibersegurança para quem nunca teve acesso.</p>
       <p>Nosso objetivo é formar hackers do bem nas comunidades.</p>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <h2>📜 Código de Conduta</h2>
       <p>Respeito acima de tudo. Compartilhe conhecimento. Erros fazem parte. Nada de práticas ilegais.</p>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <h2>🛡️ Política de Uso Ético</h2>
       <p>O conhecimento aprendido aqui deve ser usado para proteger, construir e transformar.</p>
       <p>Quem usar mal será desligado do projeto.</p>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section">
       <h2>✉️ Contato</h2>
       <p>Quer participar, ajudar ou saber mais?</p>
       <p>Envie um e-mail para: <a href="mailto:contato@favelahacker.org">contato@favelahacker.org</a></p>
-    </div>
-  </div>
+      <a href="mailto:contato@favelahacker.org" class="btn">Enviar E-mail</a>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>&copy; 2025 Favela Hacker. Todos os direitos reservados.</p>
+  </footer>
 
 </body>
+
 </html>
