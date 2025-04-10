@@ -5,9 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Favela Hacker 2</title>
+  <title>Favela Hacker | Transformando vidas com tecnologia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Reset */
+    :root {
+      --primary: #00FF88;
+      --primary-dark: #00CC70;
+      --dark: #121212;
+      --darker: #0A0A0A;
+      --light: #F0F0F0;
+      --gray: #888;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,148 +26,351 @@
     }
 
     body {
-      background-color: #121212;
-      color: #00FF00;
-      font-family: 'Roboto', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      padding: 20px;
-      font-size: 16px;
       overflow-x: hidden;
-      max-width: 100%;
     }
 
-    h1, h2 {
-      color: #00FF00;
-      margin-bottom: 10px;
+    .code-font {
+      font-family: 'IBM Plex Mono', monospace;
     }
 
-    h1 {
-      font-size: 3rem;
+    /* Navigation */
+    nav {
+      background-color: var(--darker);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--primary);
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a.active {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+      padding: 5rem 2rem;
       text-align: center;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-top: 20px;
-      font-weight: 500;
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), #00D1FF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
     }
 
-    a {
-      color: #00FF00;
-      text-decoration: none;
-      font-weight: 500;
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      color: var(--gray);
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .section p {
-      margin-bottom: 10px;
-    }
-
-    .section p br {
-      margin-bottom: 10px;
-    }
-
+    /* Main Content */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
-      text-align: left;
+      padding: 4rem 2rem;
     }
 
-    /* Modern Button Style */
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: var(--primary);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: var(--darker);
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid rgba(0, 255, 136, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    /* Buttons */
     .btn {
       display: inline-block;
-      background-color: #00FF00;
-      color: #121212;
-      padding: 12px 24px;
+      background-color: var(--primary);
+      color: var(--dark);
+      padding: 0.8rem 1.8rem;
       border-radius: 4px;
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: background-color 0.3s;
+      font-weight: 700;
+      transition: background-color 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
     .btn:hover {
-      background-color: #33cc33;
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
-    /* Responsive Design */
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      margin-left: 1rem;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 255, 136, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--darker);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      body {
-        font-size: 14px;
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
       }
 
-      h1 {
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero h1 {
         font-size: 2.5rem;
       }
 
-      h2 {
-        font-size: 1.75rem;
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
       }
 
-      .container {
-        padding: 15px;
+      .btn-outline {
+        margin-left: 0;
+        margin-top: 1rem;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <header>
-    <div class="container">
-      <h1>Favela Hacker 2</h1>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo code-font">FAVELA_HACKER</a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Início</a>
+        <a href="sobre.html">Sobre Nós</a>
+        <a href="#valores">Valores</a>
+        <a href="#contato">Contato</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="container">
-    <section class="section">
-      <h2>🎯 Missão</h2>
-      <p>Hackear a desigualdade com conhecimento e tecnologia.</p>
-      <p>Transformar vidas através da educação em cibersegurança.</p>
-      <p>Capacitar jovens de comunidades vulneráveis com habilidades digitais.</p>
+  <section class="hero">
+    <h1 class="code-font">Hackeando a desigualdade com tecnologia</h1>
+    <p>Transformamos vidas através da educação em cibersegurança e tecnologia, capacitando jovens de comunidades vulneráveis com habilidades digitais para o futuro.</p>
+    <div class="btn-container">
+      <a href="#participar" class="btn">Quero Participar</a>
+      <a href="sobre.html" class="btn btn-outline">Conheça Nossa História</a>
+    </div>
+  </section>
+
+  <div class="container">
+    <section id="missao" class="section">
+      <h2>🎯 Nossa Missão</h2>
+      <p>O Favela Hacker nasceu para democratizar o acesso ao conhecimento em tecnologia e cibersegurança nas periferias. Acreditamos que o futuro é digital e queremos garantir que todos tenham oportunidade de fazer parte dessa revolução.</p>
+      
+      <div class="card-grid">
+        <div class="card">
+          <h3>Educação Tecnológica</h3>
+          <p>Cursos práticos de programação, segurança digital e infraestrutura de redes adaptados para iniciantes.</p>
+        </div>
+        <div class="card">
+          <h3>Oportunidades Reais</h3>
+          <p>Conectamos nossos alunos com empresas parceiras para estágios e empregos na área de tecnologia.</p>
+        </div>
+        <div class="card">
+          <h3>Comunidade Ativa</h3>
+          <p>Grupo de apoio, mentoria coletiva e network com profissionais da área para troca de conhecimentos.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>🧩 Nosso Projeto</h2>
-      <p>Favela Hacker é uma porta de entrada para o mundo da tecnologia.</p>
-      <p>Ensinamos cibersegurança para quem nunca teve acesso.</p>
-      <p>Nosso objetivo é formar hackers do bem nas comunidades.</p>
+    <section id="valores" class="section">
+      <h2>🧩 Nossos Valores</h2>
+      <p>No Favela Hacker, construímos nossa jornada sobre pilares éticos que guiam todas as nossas ações:</p>
+      
+      <h3>📜 Código de Conduta</h3>
+      <ul>
+        <li><strong>Respeito acima de tudo</strong> - Ambiente livre de discriminação e preconceitos</li>
+        <li><strong>Compartilhamento de conhecimento</strong> - Aqui ninguém fica pra trás</li>
+        <li><strong>Erros fazem parte</strong> - Aprendemos mais com os desafios do que com os acertos</li>
+        <li><strong>Transparência</strong> - Tomadas de decisão coletivas e abertas à comunidade</li>
+      </ul>
+
+      <h3>🛡️ Política de Uso Ético</h3>
+      <p>O conhecimento compartilhado no Favela Hacker deve ser usado exclusivamente para:</p>
+      <ul>
+        <li>Proteger sistemas e pessoas</li>
+        <li>Construir soluções inovadoras</li>
+        <li>Transformar realidades sociais</li>
+      </ul>
+      <p><strong>Importante:</strong> Qualquer uso para atividades maliciosas ou ilegais resultará em desligamento imediato do projeto e possíveis medidas legais.</p>
     </section>
 
-    <section class="section">
-      <h2>📜 Código de Conduta</h2>
-      <p>Respeito acima de tudo. Compartilhe conhecimento. Erros fazem parte. Nada de práticas ilegais.</p>
+    <section id="participar" class="section">
+      <h2>🚀 Como Participar</h2>
+      <p>Quer fazer parte dessa revolução digital nas favelas? Veja como você pode se envolver:</p>
+      
+      <div class="card-grid">
+        <div class="card">
+          <h3>Aluno</h3>
+          <p>Jovens entre 16 e 29 anos moradores de comunidades podem se inscrever para nossos cursos gratuitos.</p>
+          <a href="#contato" class="btn" style="margin-top: 1rem;">Quero Estudar</a>
+        </div>
+        <div class="card">
+          <h3>Voluntário</h3>
+          <p>Profissionais de TI podem contribuir como instrutores, mentores ou ajudando na organização.</p>
+          <a href="#contato" class="btn" style="margin-top: 1rem;">Quero Ajudar</a>
+        </div>
+        <div class="card">
+          <h3>Parceiro</h3>
+          <p>Empresas podem apoiar com recursos, infraestrutura ou oportunidades de emprego.</p>
+          <a href="#contato" class="btn" style="margin-top: 1rem;">Quero Parceria</a>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>🛡️ Política de Uso Ético</h2>
-      <p>O conhecimento aprendido aqui deve ser usado para proteger, construir e transformar.</p>
-      <p>Quem usar mal será desligado do projeto.</p>
+    <section id="contato" class="section">
+      <h2>✉️ Fale Conosco</h2>
+      <p>Tem dúvidas, quer participar ou apoiar nosso projeto?</p>
+      <p>Entre em contato pelo e-mail: <a href="mailto:contato@favelahacker.org" style="color: var(--primary);">contato@favelahacker.org</a></p>
+      <p>Ou nos siga nas redes sociais:</p>
+      <div style="margin-top: 1rem;">
+        <a href="#" class="btn" style="margin-right: 0.5rem;">Instagram</a>
+        <a href="#" class="btn" style="margin-right: 0.5rem;">LinkedIn</a>
+        <a href="#" class="btn">GitHub</a>
+      </div>
     </section>
+  </div>
 
-    <section class="section">
-      <h2>✉️ Contato</h2>
-      <p>Quer participar, ajudar ou saber mais?</p>
-      <p>Envie um e-mail para: <a href="mailto:contato@favelahacker.org">contato@favelahacker.org</a></p>
-      <a href="mailto:contato@favelahacker.org" class="btn">Enviar E-mail</a>
-    </section>
-  </main>
-
-  <footer class="container">
-    <p>&copy; 2025 Favela Hacker. Todos os direitos reservados.</p>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="#valores">Valores</a>
+      <a href="#contato">Contato</a>
+      <a href="#">Termos de Uso</a>
+    </div>
+    <p class="copyright">© 2025 Favela Hacker. Todos os direitos reservados. | Feito com ❤️ nas comunidades</p>
   </footer>
-
 </body>
 
 </html>
