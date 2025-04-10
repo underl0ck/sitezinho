@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sobre Nós | Favela Hacker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00FF88;
+      --primary-dark: #00CC70;
+      --dark: #121212;
+      --darker: #0A0A0A;
+      --light: #F0F0F0;
+      --gray: #888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .code-font {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--darker);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a.active {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), #00D1FF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: var(--primary);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background-color: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+      text-align: right;
+    }
+
+    .right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .left::after {
+      right: -10px;
+    }
+
+    .right::after {
+      left: -10px;
+    }
+
+    .timeline-content {
+      padding: 20px;
+      background-color: var(--darker);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .timeline-date {
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .team-member {
+      background: var(--darker);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary);
+    }
+
+    .team-member h3 {
+      margin: 0.5rem 0;
+    }
+
+    .team-member p.role {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--dark);
+      padding: 0.8rem 1.8rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background-color 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--darker);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 21px;
+      }
+
+      .left, .right {
+        left: 0;
+        text-align: left;
+      }
+
+      .left::after, .right::after {
+        left: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo code-font">FAVELA_HACKER</a>
+      <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="sobre.html" class="active">Sobre Nós</a>
+        <a href="index.html#valores">Valores</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1 class="code-font">Nossa História</h1>
+    <p>Conheça a jornada do Favela Hacker desde sua concepção até os dias atuais</p>
+  </section>
+
+  <div class="container">
+    <section class="section">
+      <h2>Quem Somos</h2>
+      <p>O Favela Hacker é um movimento social que nasceu nas comunidades do Rio de Janeiro com o objetivo de democratizar o acesso ao conhecimento em tecnologia e cibersegurança. Somos uma equipe de entusiastas da tecnologia que acredita no poder transformador da educação digital.</p>
+      
+      <h3>Nossa Jornada</h3>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">2018</div>
+            <p>Idealização do projeto a partir de oficinas voluntárias de informática básica em comunidades</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <div class="timeline-date">2019</div>
+            <p>Primeiro curso oficial de introdução à cibersegurança com 15 alunos formados</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">2020</div>
+            <p>Expansão para formato online durante a pandemia, alcançando jovens de várias comunidades</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <div class="timeline-date">2021</div>
+            <p>Primeira turma com colocação profissional de 80% dos formados no mercado de TI</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">2023</div>
+            <p>Reconhecimento como uma das principais iniciativas de inclusão digital no Brasil</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Nossa Equipe</h2>
+      <p>Conheça as pessoas por trás do Favela Hacker que tornam essa transformação possível:</p>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Foto do fundador">
+          <h3>Marcos Silva</h3>
+          <p class="role">Fundador</p>
+          <p>Ex-security analyst, deixou o mercado corporativo para levar conhecimento para as comunidades.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Foto da coordenadora">
+          <h3>Ana Costa</h3>
+          <p class="role">Coordenadora Pedagógica</p>
+          <p>Pedagoga especializada em educação digital para jovens em situação de vulnerabilidade.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Foto do instrutor">
+          <h3>Rafael Souza</h3>
+          <p class="role">Instrutor Chefe</p>
+          <p>Hacker ético certificado, ex-aluno do projeto que voltou para ensinar as novas turmas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Nossos Números</h2>
+      <p>O impacto real do Favela Hacker em números:</p>
+      <ul>
+        <li><strong>500+</strong> jovens formados em nossos cursos</li>
+        <li><strong>70%</strong> de empregabilidade na área de TI após a formação</li>
+        <li><strong>15</strong> comunidades atendidas em 3 estados brasileiros</li>
+        <li><strong>30</strong> voluntários ativos compartilhando conhecimento</li>
+        <li><strong>12</strong> empresas parceiras que contratam nossos alunos</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Quer Saber Mais?</h2>
+      <p>Nosso trabalho só é possível graças ao apoio de pessoas e organizações que acreditam na nossa causa.</p>
+      <p>Se você quer contribuir, participar ou saber mais detalhes sobre nosso trabalho, entre em contato:</p>
+      <a href="mailto:contato@favelahacker.org" class="btn" style="margin-top: 1rem;">Fale Conosco</a>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="index.html#valores">Valores</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="#">Termos de Uso</a>
+    </div>
+    <p class="copyright">© 2025 Favela Hacker. Todos os direitos reservados. | Feito com ❤️ nas comunidades</p>
+  </footer>
+</body>
+
+</html>
